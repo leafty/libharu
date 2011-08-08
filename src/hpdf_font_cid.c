@@ -688,16 +688,18 @@ MeasureText  (HPDF_Font          font,
                 tmp_len = i + 1;
                 if (real_width)
                     *real_width = w;
-            } else
-            if (last_btype == HPDF_BYTE_TYPE_TRIAL ||
-                    (btype == HPDF_BYTE_TYPE_LEAD &&
-                    last_btype == HPDF_BYTE_TYPE_SINGLE)) {
-                if (!HPDF_Encoder_CheckJWWLineHead(encoder, code)) {
-                    tmp_len = i;
-                    if (real_width)
-                        *real_width = w;
-                }
             }
+						/* This seems to create problems with french words */
+						// else
+            //            if (last_btype == HPDF_BYTE_TYPE_TRIAL ||
+            //                    (btype == HPDF_BYTE_TYPE_LEAD &&
+            //                    last_btype == HPDF_BYTE_TYPE_SINGLE)) {
+            //                if (!HPDF_Encoder_CheckJWWLineHead(encoder, code)) {
+            //                    tmp_len = i;
+            //                    if (real_width)
+            //                        *real_width = w;
+            //                }
+            //            }
         }
 
         if (HPDF_IS_WHITE_SPACE(b)) {
